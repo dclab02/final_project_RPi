@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Voice-change-test</title>
+	
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Righteous|Nova+Square' rel='stylesheet' type='text/css'>
+	  <link href="styles/normalize.css" rel="stylesheet" type="text/css">
+    <link href="styles/app.css" rel="stylesheet" type="text/css">
+	
+</head>
+<body>
+  <div class="wrapper">
+    
+    <header>
+      <h1>Voice-change-test</h1>
+    </header>
+
+    <canvas class="visualizer" width="640" height="300"></canvas><br><br><br>
+    <canvas class="visualizer_fr" width="640" height="300"></canvas>
+
+    <form class="controls">
+      <div>
+        <label>BiquadFilter1: </label><br><br>
+        <font color="white">Type: 
+        </font><select name="BiquadFilter1_Type", id="BiquadFilter1_Type">
+        <option value="lowshelf">low shelf</option>
+        <option value="highshelf">high shelf</option>
+        <option value="peaking">peaking</option>
+        <option value="allpass" selected>Off</option>
+        </select><br>
+        <font color="white">Frequency: </font><input name="BiquadFilter1_frequency" id="BiquadFilter1_frequency" value=1000>
+        <font color="white">Gain: </font><input name="BiquadFilter1_Gain" id="BiquadFilter1_Gain" value=0>
+        <font color="white">Q: </font><input name="BiquadFilter1_Q" id="BiquadFilter1_Q" value=0.1><br><br>        
+      </div>
+      <div>
+        <label>BiquadFilter2: </label><br><br>
+        <font color="white">Type: </font>
+        <select name="BiquadFilter2_Type", id="BiquadFilter2_Type">
+        <option value="lowshelf">low shelf</option>
+        <option value="highshelf">high shelf</option>
+        <option value="peaking">peaking</option>
+        <option value="allpass" selected>Off</option>
+        </select><br>
+        <font color="white">Frequency: </font><input name="BiquadFilter2_frequency" id="BiquadFilter2_frequency" value=1000>
+        <font color="white">Gain: </font><input name="BiquadFilter2_Gain" id="BiquadFilter2_Gain" value=0>
+        <font color="white">Q: </font><input name="BiquadFilter2_Q" id="BiquadFilter2_Q" value=0.1><br><br>        
+      </div>
+      <div>
+        <label>BiquadFilter3: </label><br><br>
+        <font color="white">Type: </font>
+        <select name="BiquadFilter3_Type", id="BiquadFilter3_Type">
+        <option value="lowshelf">low shelf</option>
+        <option value="highshelf">high shelf</option>
+        <option value="peaking">peaking</option>
+        <option value="allpass" selected>Off</option>
+        </select><br>
+        <font color="white">Frequency: </font><input name="BiquadFilter3_frequency" id="BiquadFilter3_frequency" value=1000>
+        <font color="white">Gain: </font><input name="BiquadFilter3_Gain" id="BiquadFilter3_Gain" value=0>
+        <font color="white">Q: </font><input name="BiquadFilter3_Q" id="BiquadFilter3_Q" value=0.1><br><br>        
+      </div>
+      <div>
+        <label>BiquadFilter4: </label><br><br>
+        <font color="white">Type: </font>
+        <select name="BiquadFilter4_Type", id="BiquadFilter4_Type">
+        <option value="lowshelf">low shelf</option>
+        <option value="highshelf">high shelf</option>
+        <option value="peaking">peaking</option>
+        <option value="allpass" selected>Off</option>
+        </select><br>
+        <font color="white">Frequency: </font><input name="BiquadFilter4_frequency" id="BiquadFilter4_frequency" value=1000>
+        <font color="white">Gain: </font><input name="BiquadFilter4_Gain" id="BiquadFilter4_Gain" value=0>
+        <font color="white">Q: </font><input name="BiquadFilter4_Q" id="BiquadFilter4_Q" value=0.1><br><br>        
+      </div>
+      <div>
+        <label>BiquadFilter5: </label><br><br>
+        <font color="white">Type: </font>
+        <select name="BiquadFilter5_Type", id="BiquadFilter5_Type">
+        <option value="lowshelf">low shelf</option>
+        <option value="highshelf">high shelf</option>
+        <option value="peaking">peaking</option>
+        <option value="allpass" selected>Off</option>
+        </select><br>
+        <font color="white">Frequency: </font><input name="BiquadFilter5_frequency" id="BiquadFilter5_frequency" value=1000>
+        <font color="white">Gain: </font><input name="BiquadFilter5_Gain" id="BiquadFilter5_Gain" value=0>
+        <font color="white">Q: </font><input name="BiquadFilter5_Q" id="BiquadFilter5_Q" value=0.1><br><br>        
+      </div>
+
+      <div>
+        <button type="button" id="confirm">confirm</button>
+        <!-- <input id="button" type="submit" name="button" value="enter"/> -->
+      </div>
+    </form>
+
+
+  </div>
+
+  <label for="toggle">❔</label>
+  <input type="checkbox" id="toggle">
+  <aside>
+    <h2>Information</h2>
+
+    <p>Voice-change-O-matic is built using:</p>
+
+    <ul>
+
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia">getUserMedia</a>, which is currently supported in Firefox, Opera (desktop/mobile) and Chrome (desktop only.) Firefox requires no prefix; the others require <code>webkit</code> prefixes.</li>
+
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>, which is currently supported in Firefox, Chrome, Safari (desktop/mobile) and Opera (desktop only). Firefox and Opera require no prefix; Chrome requires <code>webkit</code> prefixes.</li>
+
+    </ul>
+
+
+
+    <button id="install-btn">Install app</button>
+  </aside>
+
+
+    <!-- Below is your custom application script -->
+
+    <script src="scripts/app.js"></script>
+	
+</body>
+</html>

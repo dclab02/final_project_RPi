@@ -1,0 +1,8 @@
+input:
+    1. type (lowshelf, highshelf, peaking)
+    2. frequency (0 - 20000)
+    3. Gain (-15 - 15)
+    4. Q (0.1-0.2)
+output:
+    1. frequency waveform
+    2. frequency response
