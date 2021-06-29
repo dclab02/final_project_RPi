@@ -1,0 +1,34 @@
+{
+    "filters" :[
+        {
+            "type" : BF1_type,
+            "f" : BF1_f,
+            "g" : BF1_g,
+            "q" : BF1_q
+        },
+        {
+            "type" : BF2_type,
+            "f" : BF2_f,
+            "g" : BF2_g,
+            "q" : BF2_q
+        },
+        {
+            "type" : BF3_type,
+            "f" : BF3_f,
+            "g" : BF3_g,
+            "q" : BF3_q
+        },
+        {
+            "type" : BF4_type,
+            "f" : BF4_f,
+            "g" : BF4_g,
+            "q" : BF4_q
+        },
+        {
+            "type" : BF5_type,
+            "f" : BF5_f,
+            "g" : BF5_g,
+            "q" : BF5_q
+        }
+    ]
+}
