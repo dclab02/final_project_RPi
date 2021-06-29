@@ -6,13 +6,22 @@ import time
 import random
 import threading
 import json
+from equalizer import Filter
+# TODO
+# 1. deal with the communication with FPGA
+# 2. add Constraint?
+#   (1). type (lowshelf, highshelf, peaking)
+#   (2). frequency (0 - 20000)
+#   (3). Gain (-15 - 15)
+#   (4). Q (0.1-0.2)
 
 # some parameters
 N = 600         # Number of sample points
 F = 20000.0       # sample Frequency
 T = 1.0 / F     # sample spacing
 stop = False
-parameters = {}
+parameters = []
+
 # util function
 def gen_frequency_data(data, num, freq):
     N = num
@@ -28,13 +37,14 @@ class FPGA_thread (threading.Thread):
         self.threadID = threadID
         self.name = name
         self.data = []
- 
+        
     def run(self):
         print(f'{self.name} start')
         while not stop:
             # TODO 
             # 1. get data from fpga
             # 2. processing
+            # 3. send data to fpga
             self.data = [random.randint(0,200) for i in range(150)]
             time.sleep(0.1)
             self.data = [50 for i in range(150)]
@@ -42,7 +52,7 @@ class FPGA_thread (threading.Thread):
         
 # intereface to frontend
 async def handledata(websocket, path):
-    global parameters
+    global filternodes
     while True:
         rq = await websocket.recv()
         if rq == "request":
@@ -50,12 +60,17 @@ async def handledata(websocket, path):
                 await websocket.send(str(el))
             await websocket.send('done')
         elif rq == "parameter":
-            # TODO get the data
             await websocket.send('sendparameter_ack')
             receive = await websocket.recv()
-            parameters = json.loads(receive)
+            parameters_raw = json.loads(receive)
+            for i, filternode in enumerate(filternodes):
+                filternode.filt(parameters_raw["filters"][i]["type"], 
+                parameters_raw["filters"][i]["f"], 
+                parameters_raw["filters"][i]["g"], 
+                parameters_raw["filters"][i]["q"])
 
 try:
+    filternodes = [Filter(F) for i in range(5)]
     fpgathread = FPGA_thread(1, "FPGAThread")
     fpgathread.start()
     asyncio.get_event_loop().run_until_complete(websockets.serve(handledata, 'localhost', 8765))
@@ -64,11 +79,3 @@ try:
 except KeyboardInterrupt:
     stop = True
     print("Exiting program...")
-
-# yf = gen_frequency_data(y, N, 1.0/T)
-# import matplotlib.pyplot as plt
-# xf = fftfreq(N, T)[:N//2]
-# plt.plot(xf,  np.abs(yf))
-# plt.grid()
-# plt.show()
-# print(gen_frequency_data(y, 600, 800))
