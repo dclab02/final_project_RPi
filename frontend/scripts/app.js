@@ -6,7 +6,7 @@ heading.textContent = 'Equalizer';
 // parameters 
 var pixelsPerDb;
 var dbScale = 15;
-var buffersize = 150;
+var buffersize = 200;
 var drawVisual;
 var data = new Uint8Array(buffersize);
 var parameterflag = false;
@@ -135,14 +135,14 @@ function init() {
             drawVisual = requestAnimationFrame(drawAlt);
             canvasCtx.fillStyle = 'rgb(0, 0, 0)';
             canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-            var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+            var barWidth = (WIDTH / bufferLengthAlt);
             var barHeight;
             var x = 0;
 
             for (var i = 0; i < bufferLengthAlt; i++) {
                 barHeight = dataArrayAlt[i];
                 canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-                canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+                canvasCtx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
                 x += barWidth + 1;
             }
         };

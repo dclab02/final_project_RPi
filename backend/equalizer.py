@@ -1,6 +1,6 @@
 # Ref: https: // www.musicdsp.org/en/latest/_downloads/3e1dc886e7849251d6747b194d482272/Audio-EQ-Cookbook.txt
 import numpy as np
-# import pyaudio
+import pyaudio
 import wave
 import argparse
 
@@ -29,7 +29,8 @@ class Filter():
             "peaking": self.peakingEQ,
             "lowshelf": self.low_shelf,
             "highshelf": self.high_shelf,
-            "allpass": self.all_pass
+            "allpass": self.all_pass,
+            "lowpass": self.low_pass
         }
 
     def _cal_common(self, f0, dbgain, Q):
@@ -68,6 +69,11 @@ class Filter():
         self.a = [(A+1) - (A-1)*self.cw0 + 2*np.sqrt(A)*self.alpha,
                   2*((A-1) - (A+1)*self.cw0),
                   (A+1) - (A-1)*self.cw0 - 2*np.sqrt(A)*self.alpha]
+        return self.b, self.a
+    
+    def low_pass(self):
+        self.b = [(1-self.cw0)/2, 1-self.cw0, (1-self.cw0)/2]
+        self.a = [1+self.alpha, -2*self.cw0, 1-self.alpha]
         return self.b, self.a
 
     def filt(self, type, f0, dbgain, Q):
@@ -194,11 +200,14 @@ def parse_arg():
                         help='enter quality factor (Q)')
     return parser.parse_args()
 
-'''
+def bitwise_and_bytes(a, b):
+    result_int = int.from_bytes(a, byteorder="big") & int.from_bytes(b, byteorder="big")
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
 if __name__ == "__main__":
     # args = parse_arg()
 
-    wf = wave.open('./input3.wav', 'rb')
+    wf = wave.open('./test_mono.wav', 'rb')
     CHUNK = 1
 
     p = pyaudio.PyAudio()
@@ -208,31 +217,30 @@ if __name__ == "__main__":
 
     eq = Equalizer(framerate)
 
-    # eq.set_coef(1, "lowShelf", 100, 6, 1)
-    eq.set_coef(2, "highShelf", 2000, -20, 1)
-    eq.set_coef(3, "lowShelf", 100, -6, 0.2)
-    # eq.set_coef(4, "peakingEQ", 2000, 10, 1)
-    eq.set_coef(5, "peakingEQ", 600, -10, 0.2)
+    eq.set_coef(1, "lowshelf", 1000, 6, 1)
+    eq.set_coef(2, "allpass", 1000, 6, 1)
+    eq.set_coef(3, "allpass", 1000, 6, 1)
+    eq.set_coef(4, "allpass", 1000, 6, 1)
+    eq.set_coef(5, "allpass", 1000, 6, 1)
 
     # open stream (2)
     stream = p.open(format=pyaudio.paInt16,
                     channels=channels,
                     rate=framerate,
                     output=True)
-
+    
     # read data
     data = wf.readframes(CHUNK)
-
+    # print('hello')
     # play stream (3)
     while len(data) > 0:
+        predata = data
         data = eq.run(data)
         stream.write(data)
         data = wf.readframes(CHUNK)
-
     # stop stream (4)
     stream.stop_stream()
     stream.close()
 
     # close PyAudio (5)
     p.terminate()
-'''
