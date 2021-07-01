@@ -10,6 +10,8 @@ import json
 from equalizer import *
 from collections import deque
 import math
+import socket
+
 # from rtlsdr import RtlSdr
 # from pylab import psd
 # import matplotlib.pyplot as plt
@@ -81,7 +83,7 @@ class FPGA_thread (threading.Thread):
                     
 
     def play(self):
-        global eq, stop, wf, lock
+        global eq, stop, wf, lock, client
         CHUNK = 1
         p = pyaudio.PyAudio()
         channels, sampwidth, framerate, nframes, comptype, compname = wf.getparams()
@@ -110,6 +112,8 @@ class FPGA_thread (threading.Thread):
                 lock = False
             stream.write(filter_data)
             streamdata = wf.readframes(CHUNK)
+            client.send(b'\xaa' + filter_data)
+        client.close()
 
     def playIQ(self):
         global eq, stop, IQubytes, lock
@@ -168,9 +172,12 @@ async def handledata(websocket, path):
                 parameters_raw["filters"][i]["g"],
                 parameters_raw["filters"][i]["q"])
 
+HOST, PORT = "192.168.50.168", 1234
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+client.connect((HOST, PORT))
 
 if PLAN == 'B':
-    wf = wave.open('../utils/out_3.wav', 'rb')
+    wf = wave.open('../utils/out_demo.wav', 'rb')
     channels, sampwidth, framerate, nframes, comptype, compname = wf.getparams()
 if PLAN == 'BIQ':
     inFileName = '../utils/143.36-2.bin'

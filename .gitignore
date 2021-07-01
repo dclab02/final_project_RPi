@@ -120,4 +120,5 @@ dist
 
 *.wav
 *.bin
-
+__pycache__
+nc

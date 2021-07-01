@@ -41,8 +41,8 @@ if __name__ == "__main__":
     print(f"wave data len={len(data_all)}")
 
 
-    step = 10
-    delay =  1 / (4410000) # second
+    step = 1000
+    delay =  1 / (44100) # second
     for i in range(0, len(data_all), step):
         client.send(b'\xaa' + data_all[i:i+step])
         print(f"sent {step + 1}", data_all[i:i+step])

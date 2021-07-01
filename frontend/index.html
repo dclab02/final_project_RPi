@@ -17,89 +17,91 @@
     <header>
       <h1>Voice-change-test</h1>
     </header>
-
-    <canvas class="visualizer" width="640" height="300"></canvas><br><br><br>
-    <canvas class="visualizer_fr" width="640" height="300"></canvas>
-
-    <form class="controls">
-      <div>
-        <label>BiquadFilter1: </label><br><br>
-        <font color="white">Type: 
-        </font><select name="BiquadFilter1_Type", id="BiquadFilter1_Type">
-        <option value="lowshelf">low shelf</option>
-        <option value="highshelf">high shelf</option>
-        <option value="peaking">peaking</option>
-        <option value="lowpass">low pass</option>
-        <option value="allpass" selected>Off</option>
-        </select><br>
-        <font color="white">Frequency: </font><input name="BiquadFilter1_frequency" id="BiquadFilter1_frequency" value=1000>
-        <font color="white">Gain: </font><input name="BiquadFilter1_Gain" id="BiquadFilter1_Gain" value=0>
-        <font color="white">Q: </font><input name="BiquadFilter1_Q" id="BiquadFilter1_Q" value=0.1><br><br>        
+    <div class="container">
+      <div class="left"> 
+        <canvas class="visualizer" width="640" height="300"></canvas><br><br><br>
+        <canvas class="visualizer_fr" width="640" height="300"></canvas>
       </div>
-      <div>
-        <label>BiquadFilter2: </label><br><br>
-        <font color="white">Type: </font>
-        <select name="BiquadFilter2_Type", id="BiquadFilter2_Type">
-        <option value="lowshelf">low shelf</option>
-        <option value="highshelf">high shelf</option>
-        <option value="peaking">peaking</option>
-        <option value="lowpass">low pass</option>
-        <option value="allpass" selected>Off</option>
-        </select><br>
-        <font color="white">Frequency: </font><input name="BiquadFilter2_frequency" id="BiquadFilter2_frequency" value=1000>
-        <font color="white">Gain: </font><input name="BiquadFilter2_Gain" id="BiquadFilter2_Gain" value=0>
-        <font color="white">Q: </font><input name="BiquadFilter2_Q" id="BiquadFilter2_Q" value=0.1><br><br>        
+      <div class="right">
+        <form class="controls">
+          <div>
+            <label>BiquadFilter1: </label><br><br>
+            <font color="white">Type: 
+            </font><select name="BiquadFilter1_Type", id="BiquadFilter1_Type">
+            <option value="lowshelf">low shelf</option>
+            <option value="highshelf">high shelf</option>
+            <option value="peaking">peaking</option>
+            <option value="lowpass">low pass</option>
+            <option value="allpass" selected>Off</option>
+            </select><br>
+            <font color="white">Frequency: </font><input name="BiquadFilter1_frequency" id="BiquadFilter1_frequency" value=1000>
+            <font color="white">Gain: </font><input name="BiquadFilter1_Gain" id="BiquadFilter1_Gain" value=0>
+            <font color="white">Q: </font><input name="BiquadFilter1_Q" id="BiquadFilter1_Q" value=0.1><br><br>        
+          </div>
+          <div>
+            <label>BiquadFilter2: </label><br><br>
+            <font color="white">Type: </font>
+            <select name="BiquadFilter2_Type", id="BiquadFilter2_Type">
+            <option value="lowshelf">low shelf</option>
+            <option value="highshelf">high shelf</option>
+            <option value="peaking">peaking</option>
+            <option value="lowpass">low pass</option>
+            <option value="allpass" selected>Off</option>
+            </select><br>
+            <font color="white">Frequency: </font><input name="BiquadFilter2_frequency" id="BiquadFilter2_frequency" value=1000>
+            <font color="white">Gain: </font><input name="BiquadFilter2_Gain" id="BiquadFilter2_Gain" value=0>
+            <font color="white">Q: </font><input name="BiquadFilter2_Q" id="BiquadFilter2_Q" value=0.1><br><br>        
+          </div>
+          <div>
+            <label>BiquadFilter3: </label><br><br>
+            <font color="white">Type: </font>
+            <select name="BiquadFilter3_Type", id="BiquadFilter3_Type">
+            <option value="lowshelf">low shelf</option>
+            <option value="highshelf">high shelf</option>
+            <option value="peaking">peaking</option>
+            <option value="lowpass">low pass</option>
+            <option value="allpass" selected>Off</option>
+            </select><br>
+            <font color="white">Frequency: </font><input name="BiquadFilter3_frequency" id="BiquadFilter3_frequency" value=1000>
+            <font color="white">Gain: </font><input name="BiquadFilter3_Gain" id="BiquadFilter3_Gain" value=0>
+            <font color="white">Q: </font><input name="BiquadFilter3_Q" id="BiquadFilter3_Q" value=0.1><br><br>        
+          </div>
+          <div>
+            <label>BiquadFilter4: </label><br><br>
+            <font color="white">Type: </font>
+            <select name="BiquadFilter4_Type", id="BiquadFilter4_Type">
+            <option value="lowshelf">low shelf</option>
+            <option value="highshelf">high shelf</option>
+            <option value="peaking">peaking</option>
+            <option value="lowpass">low pass</option>
+            <option value="allpass" selected>Off</option>
+            </select><br>
+            <font color="white">Frequency: </font><input name="BiquadFilter4_frequency" id="BiquadFilter4_frequency" value=1000>
+            <font color="white">Gain: </font><input name="BiquadFilter4_Gain" id="BiquadFilter4_Gain" value=0>
+            <font color="white">Q: </font><input name="BiquadFilter4_Q" id="BiquadFilter4_Q" value=0.1><br><br>        
+          </div>
+          <div>
+            <label>BiquadFilter5: </label><br><br>
+            <font color="white">Type: </font>
+            <select name="BiquadFilter5_Type", id="BiquadFilter5_Type">
+            <option value="lowshelf">low shelf</option>
+            <option value="highshelf">high shelf</option>
+            <option value="peaking">peaking</option>
+            <option value="lowpass">low pass</option>
+            <option value="allpass" selected>Off</option>
+            </select><br>
+            <font color="white">Frequency: </font><input name="BiquadFilter5_frequency" id="BiquadFilter5_frequency" value=1000>
+            <font color="white">Gain: </font><input name="BiquadFilter5_Gain" id="BiquadFilter5_Gain" value=0>
+            <font color="white">Q: </font><input name="BiquadFilter5_Q" id="BiquadFilter5_Q" value=0.1><br><br>        
+          </div>
+    
+          <div>
+            <button type="button" id="confirm">confirm</button>
+            <!-- <input id="button" type="submit" name="button" value="enter"/> -->
+          </div>
+        </form>
       </div>
-      <div>
-        <label>BiquadFilter3: </label><br><br>
-        <font color="white">Type: </font>
-        <select name="BiquadFilter3_Type", id="BiquadFilter3_Type">
-        <option value="lowshelf">low shelf</option>
-        <option value="highshelf">high shelf</option>
-        <option value="peaking">peaking</option>
-        <option value="lowpass">low pass</option>
-        <option value="allpass" selected>Off</option>
-        </select><br>
-        <font color="white">Frequency: </font><input name="BiquadFilter3_frequency" id="BiquadFilter3_frequency" value=1000>
-        <font color="white">Gain: </font><input name="BiquadFilter3_Gain" id="BiquadFilter3_Gain" value=0>
-        <font color="white">Q: </font><input name="BiquadFilter3_Q" id="BiquadFilter3_Q" value=0.1><br><br>        
-      </div>
-      <div>
-        <label>BiquadFilter4: </label><br><br>
-        <font color="white">Type: </font>
-        <select name="BiquadFilter4_Type", id="BiquadFilter4_Type">
-        <option value="lowshelf">low shelf</option>
-        <option value="highshelf">high shelf</option>
-        <option value="peaking">peaking</option>
-        <option value="lowpass">low pass</option>
-        <option value="allpass" selected>Off</option>
-        </select><br>
-        <font color="white">Frequency: </font><input name="BiquadFilter4_frequency" id="BiquadFilter4_frequency" value=1000>
-        <font color="white">Gain: </font><input name="BiquadFilter4_Gain" id="BiquadFilter4_Gain" value=0>
-        <font color="white">Q: </font><input name="BiquadFilter4_Q" id="BiquadFilter4_Q" value=0.1><br><br>        
-      </div>
-      <div>
-        <label>BiquadFilter5: </label><br><br>
-        <font color="white">Type: </font>
-        <select name="BiquadFilter5_Type", id="BiquadFilter5_Type">
-        <option value="lowshelf">low shelf</option>
-        <option value="highshelf">high shelf</option>
-        <option value="peaking">peaking</option>
-        <option value="lowpass">low pass</option>
-        <option value="allpass" selected>Off</option>
-        </select><br>
-        <font color="white">Frequency: </font><input name="BiquadFilter5_frequency" id="BiquadFilter5_frequency" value=1000>
-        <font color="white">Gain: </font><input name="BiquadFilter5_Gain" id="BiquadFilter5_Gain" value=0>
-        <font color="white">Q: </font><input name="BiquadFilter5_Q" id="BiquadFilter5_Q" value=0.1><br><br>        
-      </div>
-
-      <div>
-        <button type="button" id="confirm">confirm</button>
-        <!-- <input id="button" type="submit" name="button" value="enter"/> -->
-      </div>
-    </form>
-
-
+    </div>
   </div>
 
   

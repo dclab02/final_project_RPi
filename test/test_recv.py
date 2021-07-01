@@ -20,14 +20,15 @@ counter = 0
 data_frame = b''
 while True:
     ret = server.recvfrom(1024)
-    if counter < 512:
-        data = ret[0][1:]
-        data_frame += data
-        counter += 1
-        if counter >= 512:
-            counter = 0
-            stream.write(data_frame)
-            print("write data_frame", len(data_frame))
-            data_frame = b''
+    print(f"recv: {len(ret)}", ret[0], ret[0][0] * 16 + ret[0][1])
+    # if counter < 512:
+    #     data = ret[0][1:]
+    #     data_frame += data
+    #     counter += 1
+    #     if counter >= 512:
+    #         counter = 0
+    #         stream.write(data_frame)
+    #         print("write data_frame", len(data_frame))
+    #         data_frame = b''
 
 

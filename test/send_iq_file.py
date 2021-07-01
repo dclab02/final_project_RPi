@@ -25,7 +25,7 @@ client.connect((HOST, PORT))
 wav_sample_rate = 44100
 record_frequency = 2000000
 
-t = 20
+t = 10
 sample_points = t * record_frequency
 
 ubytes = np.fromfile(IQ_FILE_PATH, dtype='uint8', count=-1)
@@ -44,12 +44,12 @@ sampled = np.array([(ufloats[i][0], ufloats[i][1] ) for i in range(0,len(ufloats
 sampled = sampled * 10
 print("sampled")
 
-delay = 1 / 44100 # s
-step = 1
+delay = 1 / 1000
+step = 10
 for i in range(0, len(sampled), step):
     data = sampled[i:i+step].flatten().astype(np.int8)
     client.send(b'\xaa' + data.tobytes())
-    print(f"{step} of iq_data sent", len(data) + 1)
+    print(f"{step} of iq_data sent", len(data) + 1, data.tobytes(), int(np.sqrt(data[0]**2 + data[1]**2)))
     time.sleep(delay)
 
 # print(f"{len(iq_data)} sent")
